@@ -18,20 +18,20 @@ const channels = [
 
 const Contact = (): ReactNode => (
   <SiteFrame active="contact">
-    <main className={`relative grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-14 pt-6 pb-20 ${pagePadding}`}>
-      <div className="flex flex-col gap-7">
-        <h1 className="m-0 font-mono text-[clamp(44px,7vw,104px)] font-medium leading-none tracking-[-.02em]">
+    <main className={`relative grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] gap-7 pt-7 pb-11 md:gap-14 md:pt-6 md:pb-20 ${pagePadding}`}>
+      <div className="flex flex-col gap-[18px] md:gap-7">
+        <h1 className="m-0 font-mono text-[46px] md:text-[clamp(44px,7vw,104px)] font-medium leading-none tracking-[-.02em]">
           Let&apos;s work together
         </h1>
         <p className="m-0 max-w-[440px] text-base leading-[1.65] text-muted">
           Tell me about the role or project. I usually reply within{" "}
           <em className="font-semibold text-ink">one working day</em>.
         </p>
-        <a href={`mailto:${profile.email}`} className="mt-auto self-start font-mono text-[clamp(18px,2vw,24px)] hover:text-accent-deep">
+        <a href={`mailto:${profile.email}`} className="mt-auto hidden self-start font-mono text-[clamp(18px,2vw,24px)] hover:text-accent-deep md:inline">
           {profile.email}
         </a>
       </div>
-      <div className="flex flex-col gap-3.5 rounded-[28px] border border-line bg-glass p-[clamp(24px,3vw,40px)]">
+      <div className="flex flex-col gap-3 rounded-[26px] border border-line bg-white p-5 md:gap-3.5 md:rounded-[28px] md:bg-glass md:p-[clamp(24px,3vw,40px)]">
         {channels.map(({ label, value, href }) => {
           const body = (
             <>

@@ -8,6 +8,7 @@ export type Job = {
   place: string;
   start: YearMonth;
   end: YearMonth;
+  summary: string;
   highlights: string[];
 };
 
@@ -79,6 +80,8 @@ export const experience: Job[] = [
     place: "Freelance, Remote",
     start: { year: 2026, month: 5 },
     end: { year: 2026, month: 9 },
+    summary:
+      "Built the BLE data pipeline from a wearable device through React Native to a NestJS backend, streaming real-time health data.",
     highlights: [
       "Built a full BLE (Bluetooth Low Energy) data pipeline, from a wearable device through custom native iOS/Android modules in React Native to a NestJS backend, streaming real-time health data (heart rate, steps, fall detection).",
       "Developed native BLE modules for iOS and Android in React Native to receive and parse real-time sensor data from the device at 10 readings/second (1 req/100ms), integrating with C++ firmware code.",
@@ -92,6 +95,8 @@ export const experience: Job[] = [
     place: "Remote",
     start: { year: 2025, month: 10 },
     end: { year: 2026, month: 5 },
+    summary:
+      "Backend developer in a 5-person team building microservices with gRPC, RabbitMQ, Docker and AWS.",
     highlights: [
       "Collaborated within a 5-person backend team, owning task breakdown and coordinating closely with frontend and PM teams to keep delivery on track.",
       "Systematized documentation of microservices and system architectures, cutting onboarding time for new engineers and improving long-term codebase maintainability.",
@@ -108,6 +113,8 @@ export const experience: Job[] = [
     place: "Kyiv, Ukraine",
     start: { year: 2024, month: 5 },
     end: { year: 2025, month: 8 },
+    summary:
+      "Built a Laravel and Vue.js CRM, a Next.js and NestJS content platform and React Native apps, and owned their deployment.",
     highlights: [
       "Built a full-stack CRM system using Laravel and Vue.js with deep Facebook Ads API integration, enabling real-time tracking of 60000+ user interactions per day on landing pages.",
       "Owned the full deployment lifecycle on VPS: installing, configuring, and optimizing Apache and Nginx with custom proxy setups.",
@@ -123,6 +130,8 @@ export const experience: Job[] = [
     place: "Remote",
     start: { year: 2023, month: 5 },
     end: { year: 2024, month: 5 },
+    summary:
+      "Built web applications on AWS and REST APIs in Express with banking, weather and crypto integrations.",
     highlights: [
       "Integrated complex third-party APIs, including banking systems, OpenWeather, and cryptocurrency markets.",
       "Built and deployed scalable web applications on AWS (Lambda, S3, DynamoDB, RDS, Cognito), supporting 1000+ users with secure authentication.",

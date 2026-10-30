@@ -1,6 +1,7 @@
-import { Suspense, type ReactNode } from "react";
+import { Suspense, type CSSProperties, type ReactNode } from "react";
 import Link from "next/link";
 
+import { ExperienceAccordion } from "@/components/ExperienceAccordion";
 import { ArrowUpRight } from "@/components/Icons";
 import { PairButton } from "@/components/PairButton";
 import { Placeholder } from "@/components/Placeholder";
@@ -9,8 +10,6 @@ import { SiteFrame, pagePadding } from "@/components/SiteFrame";
 import { SocialPills } from "@/components/SocialPills";
 import {
   experience,
-  formatLength,
-  formatPeriod,
   profile,
   projects,
   skills,
@@ -21,10 +20,17 @@ import {
 // Server-rendered; only the slider reads the URL (?slide=N), inside a Suspense boundary.
 
 const heading = "m-0 font-mono font-medium leading-none tracking-[-.02em] text-[clamp(44px,8.4vw,124px)]";
-const sectionHeading = "m-0 font-mono font-medium leading-none text-[clamp(40px,6vw,88px)]";
+const sectionHeading = "m-0 font-mono font-medium leading-none text-[40px] md:text-[clamp(40px,6vw,88px)]";
 
 // Card widths stagger like the design; the first card is highlighted.
 const skillWidths = ["100%", "78%", "92%", "84%"];
+
+const intro = (
+  <p className="m-0 max-w-[340px] text-[15px] leading-relaxed text-pretty text-muted">
+    I build <em className="font-semibold text-ink">scalable, reliable and well-tested</em> backend
+    systems that teams can <em className="font-semibold text-ink">understand and grow with</em>.
+  </p>
+);
 
 const CarouselFromUrl = async ({
   searchParams,
@@ -37,21 +43,27 @@ const CarouselFromUrl = async ({
 const Home = ({ searchParams }: PageProps<"/">): ReactNode => (
   <SiteFrame active="home">
     <main
-      className={`relative flex flex-col gap-[clamp(80px,10vw,140px)] pt-6 pb-20 ${pagePadding}`}
+      className={`relative flex flex-col gap-12 pb-14 md:gap-[clamp(80px,10vw,140px)] md:pt-6 md:pb-20 ${pagePadding}`}
     >
-      <section className="flex flex-col gap-8">
+      <section className="flex flex-col gap-5 pt-7 md:hidden">
+        <h1 className="m-0 font-mono text-[46px] font-medium leading-none tracking-[-.02em]">
+          Software
+          <br />
+          Developer
+        </h1>
+        {intro}
+        <PairButton href="/projects" label="Projects" italic wide />
+        <SocialPills align="start" />
+      </section>
+
+      <section className="hidden flex-col gap-8 md:flex">
         <div className="flex flex-wrap items-center justify-between gap-6">
-          <h1 className={heading}>Software</h1>
+          <h2 className={heading}>Software</h2>
           <PairButton href="/projects" label="Projects" italic wide />
         </div>
         <div className="flex flex-wrap-reverse items-end justify-between gap-6">
-          <p className="m-0 max-w-[340px] text-[15px] leading-relaxed text-pretty text-muted">
-            I build{" "}
-            <em className="font-semibold text-ink">scalable, reliable and well-tested</em> backend
-            systems that teams can{" "}
-            <em className="font-semibold text-ink">understand and grow with</em>.
-          </p>
-          <h1 className={`${heading} text-right`}>Developer</h1>
+          {intro}
+          <h2 className={`${heading} text-right`}>Developer</h2>
         </div>
         <div className="pt-4">
           <SocialPills />
@@ -62,22 +74,22 @@ const Home = ({ searchParams }: PageProps<"/">): ReactNode => (
         <CarouselFromUrl searchParams={searchParams} />
       </Suspense>
 
-      <section className="flex flex-col gap-14">
-        <div className="flex flex-wrap items-baseline justify-between gap-8">
+      <section className="flex flex-col gap-5 md:gap-14">
+        <div className="flex flex-wrap items-baseline justify-between gap-5 md:gap-8">
           <h2 className={sectionHeading}>About me</h2>
-          <p className="m-0 max-w-[520px] text-[clamp(18px,1.8vw,22px)] leading-normal">
+          <p className="m-0 max-w-[520px] text-[17px] leading-normal md:text-[clamp(18px,1.8vw,22px)]">
             Hello! I&apos;m {profile.firstName}, a{" "}
             <em className="font-semibold">backend-focused software developer</em>. More than{" "}
             <em className="font-semibold">3 years</em> of experience.
           </p>
         </div>
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] items-center gap-8">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] items-center gap-5 md:gap-8">
           <div className="flex flex-col gap-3.5">
             {skills.slice(0, 4).map(({ label, items }, i) => (
               <div
                 key={label}
-                style={{ maxWidth: skillWidths[i] }}
-                className={`flex flex-col gap-2.5 rounded-[22px] border border-line px-[22px] py-5 ${
+                style={{ "--card-w": skillWidths[i] } as CSSProperties}
+                className={`flex flex-col gap-2 rounded-[20px] border border-line px-5 py-[18px] md:max-w-[var(--card-w)] md:gap-2.5 md:rounded-[22px] md:px-[22px] md:py-5 ${
                   i === 0 ? "bg-accent" : "bg-glass"
                 }`}
               >
@@ -93,30 +105,16 @@ const Home = ({ searchParams }: PageProps<"/">): ReactNode => (
               <ArrowUpRight size={12} />
             </Link>
           </div>
-          <div className="aspect-[4/5] w-[min(100%,380px)] justify-self-center overflow-hidden rounded-[28px] grayscale">
+          <div className="order-first aspect-[4/5] w-full justify-self-center overflow-hidden rounded-3xl grayscale md:order-none md:w-[min(100%,380px)] md:rounded-[28px]">
             <Placeholder label="Portrait" />
           </div>
         </div>
       </section>
 
-      <section className="relative flex flex-col gap-6">
-        <h2 className={`${sectionHeading} text-right`}>Experience</h2>
-        <div className="-mx-[clamp(20px,4vw,56px)] flex flex-col border-t border-line">
-          {experience.map((job) => (
-            <div
-              key={`${job.company}-${job.start.year}`}
-              className={`grid grid-cols-[repeat(auto-fit,minmax(min(100%,200px),1fr))] items-center gap-x-6 gap-y-2 border-b border-line py-[18px] transition-colors hover:bg-accent ${pagePadding}`}
-            >
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[15px]">{formatPeriod(job)}</span>
-                <span className="text-[11px] opacity-60">{formatLength(job)}</span>
-              </div>
-              <span className="text-[15px] font-semibold">{job.company}</span>
-              <span className="col-span-2 font-mono text-sm">{job.role}</span>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-col items-end gap-0.5 text-sm">
+      <section className="relative flex flex-col gap-5 md:gap-6">
+        <h2 className={`${sectionHeading} md:text-right`}>Experience</h2>
+        <ExperienceAccordion jobs={experience} />
+        <div className="flex justify-between gap-0.5 text-sm md:flex-col md:items-end">
           <span className="text-muted">Total experience</span>
           <em className="font-semibold">{totalExperience(experience)}</em>
         </div>

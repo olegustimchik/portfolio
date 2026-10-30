@@ -28,12 +28,12 @@ const chipHref = (q: string, skill: string): { pathname: string; query: Record<s
 });
 
 const ProjectRow = ({ project, index }: { project: Project; index: number }): ReactNode => (
-  <article className={`flex flex-wrap items-center gap-10 ${index % 2 ? "flex-row-reverse" : ""}`}>
-    <div className="flex max-w-[440px] flex-[1_1_300px] flex-col gap-[18px]">
+  <article className={`flex flex-col gap-3.5 md:flex-row md:flex-wrap md:items-center md:gap-10 ${index % 2 ? "md:flex-row-reverse" : ""}`}>
+    <div className="flex flex-col gap-3.5 md:max-w-[440px] md:flex-[1_1_300px] md:gap-[18px]">
       <span className="font-mono text-xs text-muted">
         {String(index + 1).padStart(2, "0")} · {project.year}
       </span>
-      <h2 className="m-0 font-mono text-[clamp(26px,2.8vw,38px)] font-medium leading-[1.1]">
+      <h2 className="m-0 font-mono text-[26px] font-medium leading-[1.1] md:text-[clamp(26px,2.8vw,38px)]">
         {project.title}
       </h2>
       {(project.tags.length > 0 || project.stack.length > 0) && (
@@ -50,12 +50,15 @@ const ProjectRow = ({ project, index }: { project: Project; index: number }): Re
           ))}
         </div>
       )}
-      <p className="m-0 text-[15px] leading-[1.65] text-pretty text-muted">{project.summary}</p>
+      <p className="m-0 text-sm leading-[1.6] text-pretty text-muted md:text-[15px] md:leading-[1.65]">{project.summary}</p>
       <div className="pt-1">
         <PairButton href={`/projects/${project.slug}`} label="View case" arrow="up-right" />
       </div>
     </div>
-    <div className="grid flex-[2_1_420px] grid-cols-[2fr_1fr] grid-rows-[auto_auto] gap-3.5">
+    <div className="order-first aspect-[4/3] overflow-hidden rounded-[22px] md:hidden">
+      <Placeholder label="Main screen" />
+    </div>
+    <div className="hidden flex-[2_1_420px] grid-cols-[2fr_1fr] grid-rows-[auto_auto] gap-3.5 md:grid">
       <div className="row-span-2 aspect-[4/3] overflow-hidden rounded-3xl">
         <Placeholder label="Main screen" />
       </div>
@@ -74,8 +77,8 @@ const ProjectList = ({ q, skill }: Filter): ReactNode => {
   const hasFilter = Boolean(q || skill);
   return (
     <>
-      <div className="-mt-[clamp(40px,6vw,90px)] flex flex-col gap-[18px]">
-        <form action="/projects" className="flex max-w-[560px] items-center gap-3 rounded-full border border-line bg-white px-[22px] focus-within:border-ink">
+      <div className="flex flex-col gap-4 md:-mt-[clamp(40px,6vw,90px)] md:gap-[18px]">
+        <form action="/projects" className="flex h-[50px] max-w-[560px] items-center gap-2.5 rounded-full border border-line bg-white px-[18px] focus-within:border-ink md:h-auto md:gap-3 md:px-[22px]">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6E6A63" strokeWidth="1.6" strokeLinecap="round" aria-hidden className="block shrink-0">
             <circle cx="7" cy="7" r="5" />
             <path d="M11 11l3.5 3.5" />
@@ -94,12 +97,12 @@ const ProjectList = ({ q, skill }: Filter): ReactNode => {
             </Link>
           )}
         </form>
-        <div className="flex flex-wrap gap-2">
+        <div className="-mr-5 flex gap-2 overflow-x-auto md:mr-0 md:flex-wrap md:overflow-visible">
           {["", ...allStack].map((v) => (
             <Link
               key={v || "all"}
               href={chipHref(q, v)}
-              className={`shrink-0 rounded-full border px-4 py-2 font-mono text-xs leading-tight whitespace-nowrap hover:border-ink ${
+              className={`inline-flex h-10 shrink-0 items-center rounded-full border px-4 font-mono md:h-auto md:py-2 text-xs leading-tight whitespace-nowrap hover:border-ink ${
                 skill === v ? "border-accent bg-accent" : "border-line bg-glass"
               }`}
             >
@@ -142,8 +145,8 @@ const FilteredList = async ({
 
 const Projects = ({ searchParams }: PageProps<"/projects">): ReactNode => (
   <SiteFrame active="projects">
-    <main className={`relative flex flex-col gap-[clamp(80px,10vw,140px)] pt-6 pb-20 ${pagePadding}`}>
-      <h1 className="m-0 font-mono text-[clamp(44px,8vw,120px)] font-medium leading-none tracking-[-.02em]">
+    <main className={`relative flex flex-col gap-11 pt-7 pb-10 md:gap-[clamp(80px,10vw,140px)] md:pt-6 md:pb-20 ${pagePadding}`}>
+      <h1 className="m-0 -mb-7 font-mono text-[46px] font-medium leading-none tracking-[-.02em] md:mb-0 md:text-[clamp(44px,8vw,120px)]">
         Projects
       </h1>
       <Suspense fallback={<ProjectList q="" skill="" />}>
