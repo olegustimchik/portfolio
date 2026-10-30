@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Oleh Ustymchyk · Portfolio
 
-## Getting Started
+Personal portfolio built with Next.js (App Router), TypeScript and Tailwind CSS. Every page is server-rendered; there are no client components.
 
-First, run the development server:
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev     # http://localhost:3000
+pnpm lint
+pnpm build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All text lives in `lib/resume.ts`: profile, social links, experience, skills, education and projects. The four projects are placeholders; replace their fields (and add or remove entries) to update the Home slider, the Projects list and each case study page at `/projects/[slug]`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Pages
 
-## Learn More
+- `/` hero, project slider (`?slide=N`), about summary, experience table
+- `/about` introduction, full experience, skills, education
+- `/projects` project list with search and stack filter (`?q=`, `?skill=`)
+- `/projects/[slug]` case study
+- `/contact` contact details
 
-To learn more about Next.js, take a look at the following resources:
+## Design tokens
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Defined in `app/globals.css`: canvas `#E4E0D8`, paper `#F4F2EE`, ink `#141414`, accent `#FF4D1F`, muted `#6E6A63`, line `#8A857C`. Fonts are Fira Code (headings, labels) and Open Sans (body), loaded with `next/font`.

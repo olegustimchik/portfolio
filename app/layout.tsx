@@ -1,32 +1,35 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fira_Code, Open_Sans } from "next/font/google";
+
 import "./globals.css";
 
-// Root layout: loads fonts and global styles for the server-rendered portfolio.
+// Root layout: loads the design's two typefaces and global styles.
+// Pages wrap their content in <SiteFrame>, which draws the nav and footer.
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
+  subsets: ["latin", "cyrillic"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const firaCode = Fira_Code({
+  variable: "--font-fira-code",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Oleh Ustymchyk · Software Developer",
+  title: {
+    default: "Oleh Ustymchyk · Software Developer",
+    template: "%s · Oleh Ustymchyk",
+  },
   description:
     "Portfolio of Oleh Ustymchyk, a backend-focused software developer working with Node.js, NestJS, microservices and AWS.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${openSans.variable} ${firaCode.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
