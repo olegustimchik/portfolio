@@ -5,7 +5,7 @@ import { profile } from "@/lib/resume";
 
 import { SocialPills } from "./SocialPills";
 
-// Page chrome from the design: rounded paper card with the nav on top and the footer below.
+// Page chrome: full-width paper background with the nav on top and the footer below.
 // Usage: <SiteFrame active="about">...page sections...</SiteFrame>
 
 export type NavKey = "home" | "about" | "projects" | "contact";
@@ -25,8 +25,8 @@ const COPYRIGHT_YEAR = 2026;
 export const pagePadding = "px-[clamp(20px,4vw,56px)]";
 
 export const SiteFrame = ({ active, children }: SiteFrameProps): ReactNode => (
-  <div className="mx-auto my-4 max-w-[1440px] px-4">
-    <div className="relative overflow-hidden rounded-[32px] border border-line-soft bg-paper">
+  <div className="min-h-screen bg-paper">
+    <div className="relative mx-auto max-w-[1440px] overflow-hidden">
       <nav
         className={`relative z-20 flex flex-wrap items-center justify-between gap-5 py-7 ${pagePadding}`}
       >
