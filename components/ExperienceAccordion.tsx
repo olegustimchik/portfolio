@@ -15,10 +15,10 @@ export const ExperienceAccordion = ({ jobs }: ExperienceAccordionProps): ReactNo
       <details
         key={`${job.company}-${job.start.year}`}
         open={i === 0}
-        className="group border-b border-line open:bg-accent/8"
+        className="group border-b border-line open:bg-ink/7"
       >
         <summary
-          className={`flex min-h-[76px] cursor-pointer list-none items-center gap-3 py-4 md:py-[18px] md:hover:bg-accent [&::-webkit-details-marker]:hidden ${pagePadding}`}
+          className={`group/row flex min-h-[76px] cursor-pointer list-none items-center gap-3 py-4 md:py-[18px] [&::-webkit-details-marker]:hidden ${pagePadding}`}
         >
           <div className="flex min-w-0 flex-1 flex-col gap-[3px] md:grid md:grid-cols-[1fr_1fr_2fr] md:items-center md:gap-6">
             <div className="flex flex-col gap-0.5">
@@ -31,7 +31,7 @@ export const ExperienceAccordion = ({ jobs }: ExperienceAccordionProps): ReactNo
             <span className="text-[15px] font-semibold">{job.company}</span>
             <span className="font-mono text-[13px] md:text-sm">{job.role}</span>
           </div>
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line bg-glass">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line bg-glass transition-colors group-hover/row:border-ink group-hover/row:bg-ink group-hover/row:text-paper group-focus-visible/row:border-ink group-focus-visible/row:bg-ink group-focus-visible/row:text-paper">
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="block group-open:rotate-180">
               <path d="M4 6l4 4 4-4" />
             </svg>
@@ -41,7 +41,7 @@ export const ExperienceAccordion = ({ jobs }: ExperienceAccordionProps): ReactNo
           <p className="m-0 text-sm leading-relaxed text-muted">{job.summary}</p>
           {job.highlights.map((point) => (
             <div key={point} className="flex items-baseline gap-2.5 text-sm leading-[1.55]">
-              <span className="h-1.5 w-1.5 shrink-0 -translate-y-0.5 rounded-full bg-accent" />
+              <span className="h-1.5 w-1.5 shrink-0 -translate-y-0.5 rounded-full bg-ink" />
               <span>{point}</span>
             </div>
           ))}

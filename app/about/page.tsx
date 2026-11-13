@@ -66,7 +66,7 @@ const About = (): ReactNode => (
               <ul className="m-0 mt-1 flex list-none flex-col gap-2 p-0 text-sm md:mt-0 md:text-[15px] leading-[1.65] text-pretty text-muted">
                 {job.highlights.map((item) => (
                   <li key={item} className="relative pl-4">
-                    <span aria-hidden className="absolute top-[.7em] left-0 h-1.5 w-1.5 rounded-full bg-accent" />
+                    <span aria-hidden className="absolute top-[.7em] left-0 h-1.5 w-1.5 rounded-full bg-ink" />
                     {item}
                   </li>
                 ))}
@@ -83,7 +83,7 @@ const About = (): ReactNode => (
             <div
               key={label}
               className={`flex flex-col gap-2.5 rounded-[22px] border border-line px-[22px] py-5 ${
-                i === 0 ? "bg-accent" : "bg-glass"
+                i === 0 ? "bg-ink text-paper" : "bg-glass"
               }`}
             >
               <span className="text-[15px] font-semibold">{label}</span>
@@ -100,7 +100,7 @@ const About = (): ReactNode => (
             <div
               key={degree}
               className={`flex flex-col gap-6 rounded-[22px] border border-line p-6 md:gap-9 md:rounded-3xl md:p-8 ${
-                i === 0 ? "bg-accent" : "bg-glass"
+                i === 0 ? "bg-ink text-paper" : "bg-glass"
               }`}
             >
               <span className="font-mono text-xs">{period}</span>
