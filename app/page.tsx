@@ -89,8 +89,8 @@ const Home = ({ searchParams }: PageProps<"/">): ReactNode => (
               <div
                 key={label}
                 style={{ "--card-w": skillWidths[i] } as CSSProperties}
-                className={`flex flex-col gap-2 rounded-[20px] border border-line px-5 py-[18px] md:max-w-[var(--card-w)] md:gap-2.5 md:rounded-[22px] md:px-[22px] md:py-5 ${
-                  i === 0 ? "bg-accent" : "bg-glass"
+                className={`flex flex-col gap-2 rounded-[20px] border border-line transition-colors hover:border-ink px-5 py-[18px] md:max-w-[var(--card-w)] md:gap-2.5 md:rounded-[22px] md:px-[22px] md:py-5 ${
+                  i === 0 ? "bg-ink text-paper" : "bg-glass"
                 }`}
               >
                 <span className="text-[15px] font-semibold">{label}</span>
@@ -99,7 +99,7 @@ const Home = ({ searchParams }: PageProps<"/">): ReactNode => (
             ))}
             <Link
               href="/about"
-              className="mt-2 inline-flex items-center gap-1.5 self-start rounded-full border border-line bg-glass px-[18px] py-2.5 font-mono text-[13px] whitespace-nowrap transition-colors hover:border-accent hover:bg-accent"
+              className="mt-2 inline-flex items-center gap-1.5 self-start rounded-full border border-line bg-glass px-[18px] py-2.5 font-mono text-[13px] whitespace-nowrap transition-colors hover:border-ink hover:bg-ink hover:text-paper"
             >
               More about me
               <ArrowUpRight size={12} />

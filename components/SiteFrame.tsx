@@ -51,7 +51,7 @@ const MobileMenu = ({ active }: { active: NavKey }): ReactNode => (
         >
           <span
             className={`font-mono text-[38px] font-medium leading-none ${
-              key === active ? "text-accent-deep" : ""
+              key === active ? "text-muted" : ""
             }`}
           >
             {label}
@@ -86,7 +86,7 @@ export const SiteFrame = ({ active, children }: SiteFrameProps): ReactNode => (
               key={key}
               href={href}
               aria-current={key === active ? "page" : undefined}
-              className={key === active ? "text-accent-deep" : "hover:text-accent-deep"}
+              className={key === active ? "text-muted" : "hover:text-muted"}
             >
               {label}
             </Link>
@@ -115,7 +115,7 @@ export const SiteFrame = ({ active, children }: SiteFrameProps): ReactNode => (
         <div className="flex min-w-[min(100%,320px)] flex-col gap-6 md:gap-[18px]">
           <div className="grid grid-cols-2 gap-3 text-sm md:flex md:flex-wrap md:gap-6 md:text-[13px]">
             {menuLinks.map(({ href, label }) => (
-              <Link key={href} href={href} className="hover:text-accent-deep">
+              <Link key={href} href={href} className="hover:text-muted">
                 {label}
               </Link>
             ))}

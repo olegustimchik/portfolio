@@ -27,11 +27,11 @@ const Contact = (): ReactNode => (
           Tell me about the role or project. I usually reply within{" "}
           <em className="font-semibold text-ink">one working day</em>.
         </p>
-        <a href={`mailto:${profile.email}`} className="mt-auto hidden self-start font-mono text-[clamp(18px,2vw,24px)] hover:text-accent-deep md:inline">
+        <a href={`mailto:${profile.email}`} className="mt-auto hidden self-start font-mono text-[clamp(18px,2vw,24px)] hover:text-muted md:inline">
           {profile.email}
         </a>
       </div>
-      <div className="flex flex-col gap-3 rounded-[26px] border border-line bg-white p-5 md:gap-3.5 md:rounded-[28px] md:bg-glass md:p-[clamp(24px,3vw,40px)]">
+      <div className="flex flex-col gap-3 rounded-[26px] border border-line bg-field p-5 md:gap-3.5 md:rounded-[28px] md:bg-glass md:p-[clamp(24px,3vw,40px)]">
         {channels.map(({ label, value, href }) => {
           const body = (
             <>
@@ -52,7 +52,7 @@ const Contact = (): ReactNode => (
               key={label}
               href={href}
               {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className={`${row} transition-colors hover:border-accent hover:bg-accent`}
+              className={`${row} transition-colors hover:border-ink hover:bg-ink hover:text-paper`}
             >
               {body}
             </a>

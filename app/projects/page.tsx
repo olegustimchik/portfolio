@@ -78,8 +78,8 @@ const ProjectList = ({ q, skill }: Filter): ReactNode => {
   return (
     <>
       <div className="flex flex-col gap-4 md:-mt-[clamp(40px,6vw,90px)] md:gap-[18px]">
-        <form action="/projects" className="flex h-[50px] max-w-[560px] items-center gap-2.5 rounded-full border border-line bg-white px-[18px] focus-within:border-ink md:h-auto md:gap-3 md:px-[22px]">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6E6A63" strokeWidth="1.6" strokeLinecap="round" aria-hidden className="block shrink-0">
+        <form action="/projects" className="flex h-[50px] max-w-[560px] items-center gap-2.5 rounded-full border border-line bg-field px-[18px] focus-within:border-ink md:h-auto md:gap-3 md:px-[22px]">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#A6A6A6" strokeWidth="1.6" strokeLinecap="round" aria-hidden className="block shrink-0">
             <circle cx="7" cy="7" r="5" />
             <path d="M11 11l3.5 3.5" />
           </svg>
@@ -103,7 +103,7 @@ const ProjectList = ({ q, skill }: Filter): ReactNode => {
               key={v || "all"}
               href={chipHref(q, v)}
               className={`inline-flex h-10 shrink-0 items-center rounded-full border px-4 font-mono md:h-auto md:py-2 text-xs leading-tight whitespace-nowrap hover:border-ink ${
-                skill === v ? "border-accent bg-accent" : "border-line bg-glass"
+                skill === v ? "border-ink bg-ink text-paper" : "border-line bg-glass"
               }`}
             >
               {v || "All"}
@@ -119,7 +119,7 @@ const ProjectList = ({ q, skill }: Filter): ReactNode => {
           <span className="font-mono text-xl">No projects match</span>
           <Link
             href="/projects"
-            className="rounded-full border border-line bg-glass px-[18px] py-2.5 font-mono text-[13px] hover:border-accent hover:bg-accent"
+            className="rounded-full border border-line bg-glass px-[18px] py-2.5 font-mono text-[13px] hover:border-ink hover:bg-ink hover:text-paper"
           >
             Show all
           </Link>
