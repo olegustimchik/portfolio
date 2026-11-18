@@ -240,3 +240,6 @@ export const totalExperience = (jobs: Job[]): string => {
   });
   return formatMonths(months.size);
 };
+
+// Topic chips on the Contacts form; the first one starts selected.
+export const contactTopics: string[] = ["Full-time role", "Contract", "Freelance project", "Other"];
