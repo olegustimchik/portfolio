@@ -1,41 +1,36 @@
 @import "tailwindcss";
 
-/* Design tokens from the Portfolio design: warm paper, ink, orange accent. */
-:root {
-  --canvas: #e4e0d8;
-  --paper: #f4f2ee;
-  --ink: #141414;
-  --accent: #ff4d1f;
-  --accent-deep: #c93a12;
-  --muted: #6e6a63;
-  --line: #8a857c;
-  --line-soft: #ddd8ce;
-  --dot: #cfcac0;
-  --glass: rgba(244, 242, 238, 0.88);
-}
-
+/* Design tokens from Portfolio v3: near-black surface, light ink, grey lines. No accent colour;
+   highlighted elements invert to a light fill with dark text.
+   Values are written out literally (not through var() chains) so Tailwind inlines them into
+   every utility, and colours and fonts still apply where custom properties are dropped. */
 @theme inline {
-  --color-canvas: var(--canvas);
-  --color-paper: var(--paper);
-  --color-ink: var(--ink);
-  --color-accent: var(--accent);
-  --color-accent-deep: var(--accent-deep);
-  --color-muted: var(--muted);
-  --color-line: var(--line);
-  --color-line-soft: var(--line-soft);
-  --color-dot: var(--dot);
-  --color-glass: var(--glass);
-  --font-sans: var(--font-open-sans);
-  --font-mono: var(--font-fira-code);
+  --color-canvas: #1f1f1f; /* image placeholders */
+  --color-paper: #121212; /* page surface */
+  --color-field: #181818; /* inputs and form panels */
+  --color-ink: #f5f5f5; /* text and highlighted fills */
+  --color-muted: #a6a6a6;
+  --color-line: #3d3d3d;
+  --color-line-soft: #2a2a2a;
+  --color-dot: #3d3d3d;
+  --color-glass: rgba(18, 18, 18, 0.88);
+  /* Font families registered by next/font in app/layout.tsx, as in the design. */
+  --font-sans: "Open Sans", "Open Sans Fallback", system-ui, sans-serif;
+  --font-mono: "Fira Code", "Fira Code Fallback", ui-monospace, monospace;
 }
 
 /* Base rules sit in the base layer so Tailwind utilities can override them. */
 @layer base {
+  html {
+    color-scheme: dark;
+    background: #121212;
+  }
+
   body {
     margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--font-open-sans), system-ui, sans-serif;
+    background: #121212;
+    color: #f5f5f5;
+    font-family: "Open Sans", "Open Sans Fallback", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -45,14 +40,13 @@
   }
 
   input::placeholder {
-    color: var(--muted);
+    color: #a6a6a6;
   }
 }
 
-/* A pill plus its round arrow button highlight together on hover. */
+/* A pill plus its round arrow button fill light together on hover. */
 .pair:hover > * {
-  background: var(--accent) !important;
-  color: var(--ink) !important;
-  border-color: var(--accent) !important;
+  background: #f5f5f5 !important;
+  color: #121212 !important;
+  border-color: #f5f5f5 !important;
 }
-

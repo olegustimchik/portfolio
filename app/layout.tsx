@@ -6,15 +6,17 @@ import "./globals.css";
 // Root layout: loads the design's two typefaces and global styles.
 // Pages wrap their content in <SiteFrame>, which draws the nav and footer.
 
+// The design uses Open Sans in regular and italic (400/600) and Fira Code at 400/500/600.
 const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin", "cyrillic"],
+  style: ["normal", "italic"],
 });
 
 const firaCode = Fira_Code({
   variable: "--font-fira-code",
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {

@@ -22,7 +22,7 @@ export const SocialPills = ({ stretch = false, align = "center" }: SocialPillsPr
           key={label}
           href={href}
           {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-          className={`inline-flex h-10 items-center justify-center gap-2 rounded-full border border-line bg-glass px-4 text-[13px] transition-colors hover:border-accent hover:bg-accent md:h-auto md:px-5 md:py-[9px] ${
+          className={`inline-flex h-10 items-center justify-center gap-2 rounded-full border border-line bg-glass px-4 text-[13px] transition-colors hover:border-ink hover:bg-ink hover:text-paper md:h-auto md:px-5 md:py-[9px] ${
             stretch ? "flex-[1_1_120px]" : ""
           }`}
         >

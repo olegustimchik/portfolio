@@ -38,12 +38,12 @@ const CaseStudy = async ({ params }: PageProps<"/projects/[slug]">): Promise<Rea
     <SiteFrame active="projects">
       <main className={`relative flex flex-col gap-6 pt-5 pb-10 md:gap-[clamp(56px,7vw,96px)] md:pt-6 md:pb-20 ${pagePadding}`}>
         <div className="flex flex-col gap-4 md:gap-6">
-          <Link href="/projects" className="inline-flex items-center gap-2 self-start font-mono text-[13px] text-muted hover:text-accent-deep">
+          <Link href="/projects" className="inline-flex items-center gap-2 self-start font-mono text-[13px] text-muted hover:text-muted">
             <ArrowLeft size={14} />
             All projects
           </Link>
           <span className="hidden items-center gap-2.5 font-mono md:inline-flex text-[13px] font-medium tracking-[.08em] uppercase">
-            <span className="h-2 w-2 shrink-0 rounded-full bg-accent" />
+            <span className="h-2 w-2 shrink-0 rounded-full bg-ink" />
             Case study {String(index + 1).padStart(2, "0")}
           </span>
           <h1 className="m-0 font-mono text-[40px] font-medium leading-[1.05] tracking-[-.02em] md:text-[clamp(40px,7vw,104px)] md:leading-none">
@@ -82,7 +82,7 @@ const CaseStudy = async ({ params }: PageProps<"/projects/[slug]">): Promise<Rea
         </div>
         <Link
           href={`/projects/${next.slug}`}
-          className="mt-2 flex items-center justify-between gap-4 rounded-3xl border border-line bg-glass p-[22px] md:mt-0 md:flex-wrap md:gap-6 md:rounded-[28px] md:p-8 transition-colors hover:border-accent hover:bg-accent"
+          className="mt-2 flex items-center justify-between gap-4 rounded-3xl border border-line bg-glass p-[22px] md:mt-0 md:flex-wrap md:gap-6 md:rounded-[28px] md:p-8 transition-colors hover:border-ink hover:bg-ink hover:text-paper"
         >
           <div className="flex flex-col gap-1.5">
             <span className="font-mono text-[11px] opacity-60 md:text-xs">Next project</span>

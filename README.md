@@ -25,4 +25,4 @@ All text lives in `lib/resume.ts`: profile, social links, experience, skills, ed
 
 ## Design tokens
 
-Defined in `app/globals.css`: canvas `#E4E0D8`, paper `#F4F2EE`, ink `#141414`, accent `#FF4D1F`, muted `#6E6A63`, line `#8A857C`. Fonts are Fira Code (headings, labels) and Open Sans (body), loaded with `next/font`.
+Defined in `app/globals.css` (Portfolio v3, dark): paper `#121212` (page surface), field `#181818` (inputs), canvas `#1F1F1F` (image placeholders), ink `#F5F5F5` (text and highlighted fills), muted `#A6A6A6`, line `#3D3D3D`, line-soft `#2A2A2A`. There is no accent colour: highlighted cards, chips and hovers invert to a light fill with dark text. Fonts are Fira Code (headings, labels) and Open Sans (body), loaded with `next/font`.
